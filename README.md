@@ -1,0 +1,2 @@
+# AnotherShopCMS
+PHP CMS SHOP
