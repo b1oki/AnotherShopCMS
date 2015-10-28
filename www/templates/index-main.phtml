@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<? require_once 'root-head.phtml' ?>
+<body>
+
+<header>
+    <div class="container">
+        <div class="four columns">
+            <h5><?= Settings::title ?></h5>
+        </div>
+        <div class="row">
+            <div class="eight columns">
+                <? require 'root-menu.phtml' ?>
+            </div>
+        </div>
+        <div class="row">
+            <div class="six columns">
+                <img class="u-full-width" src="http://placehold.it/1800x150">
+            </div>
+            <div class="six columns">
+                <img class="u-full-width" src="http://placehold.it/1800x150">
+            </div>
+        </div>
+</header>
+
+<div class="container">
+    <h4><?= $this->page->getTitle() ?></h4>
+
+    <p>
+        Наша компания существует на Российском рынке
+    </p>
+</div>
+
+</body>
+</html>
