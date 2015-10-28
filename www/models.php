@@ -1,20 +1,5 @@
 <?php
 
-class Menu
-{
-    public $links;
-
-    public function __construct()
-    {
-        $this->links = array(
-            array('link' => '/company/', 'class' => 'Index', 'method' => 'company', 'text' => 'Компания', 'current' => false),
-            array('link' => '/news/', 'class' => 'Index', 'method' => 'company', 'text' => 'Новости', 'current' => false),
-            array('link' => '/product/', 'class' => 'Index', 'method' => 'company', 'text' => 'Продукция', 'current' => false),
-            array('link' => '/contacts/', 'class' => 'Index', 'method' => 'company', 'text' => 'Контакты', 'current' => false)
-        );
-    }
-}
-
 class Page
 {
     protected $title;
@@ -22,7 +7,12 @@ class Page
 
     public function __construct()
     {
-        $this->menu = new Menu();
+        $this->menu = array(
+            array('link' => '/company/', 'class' => 'Index', 'method' => 'about', 'text' => 'Компания', 'current' => false),
+            array('link' => '/news/', 'class' => 'News', 'method' => 'newest', 'text' => 'Новости', 'current' => false),
+            array('link' => '/product/', 'class' => 'Catalog', 'method' => 'main', 'text' => 'Продукция', 'current' => false),
+            array('link' => '/contacts/', 'class' => 'Index', 'method' => 'contacts', 'text' => 'Контакты', 'current' => false)
+        );
     }
 
     /**
@@ -72,5 +62,37 @@ class Index
     {
         $this->page->setTitle('Главная');
         require_once 'templates/index-main.phtml';
+    }
+    public function contacts()
+    {
+        echo 'CONTACTS!';
+    }
+    public function about()
+    {
+        echo 'ABOUT!';
+    }
+}
+
+class News
+{
+    public function newest()
+    {
+        echo 'NEWEST!';
+    }
+    public function article()
+    {
+        echo 'NEWS ARTICLE: ' . $_REQUEST['article_id'];
+    }
+}
+
+class Catalog
+{
+    public function main()
+    {
+        echo 'CATALOG (PATH: ' . $_REQUEST['category_path'] . ')';
+    }
+    public function item()
+    {
+        echo 'CATALOG ITEM (PATH: ' . $_REQUEST['category_path'] . '), ID: ' . $_REQUEST['item_id'];
     }
 }

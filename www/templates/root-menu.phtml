@@ -1,6 +1,6 @@
 <nav id="root-menu">
     <ul>
-        <? foreach ($this->page->menu->links as $item): ?>
+        <? foreach ($this->page->menu as $item): ?>
             <li>
                 <a href="<?= $item['link'] ?>" <?= $item['current'] ? 'class="item-selected"' : '' ?> target="_blank">
                     <?= $item['text'] ?>
