@@ -5,9 +5,11 @@ class Page
     protected $title;
     protected $template;
     protected $menu;
+    protected $data;
 
     public function __construct()
     {
+        $this->data = array();
         $this->menu = array(
             array('link' => '/company/', 'class' => 'Index', 'method' => 'about', 'text' => 'Компания', 'current' => false),
             array('link' => '/news/', 'class' => 'News', 'method' => 'newest', 'text' => 'Новости', 'current' => false),
@@ -49,7 +51,8 @@ class Page
         return $this->title . ' - ' . Settings::title;
     }
 
-    public function render() {
+    public function render()
+    {
         require $this->template;
     }
 }
@@ -60,6 +63,33 @@ class Index extends Page
     {
         $this->setTitle('Главная');
         $this->setTemplate('templates/index-main.phtml');
+        $this->data['products'] = array(
+            array(
+                'category' => 'box',
+                'image' => 'http://placehold.it/150x100',
+                'title' => 'Коробки'
+            ),
+            array(
+                'category' => 'case',
+                'image' => 'http://placehold.it/150x100',
+                'title' => 'Ящики'
+            ),
+            array(
+                'category' => 'packet',
+                'image' => 'http://placehold.it/150x100',
+                'title' => 'Пакеты'
+            ),
+            array(
+                'category' => 'barrel',
+                'image' => 'http://placehold.it/150x100',
+                'title' => 'Бочки'
+            ),
+            array(
+                'category' => 'container',
+                'image' => 'http://placehold.it/150x100',
+                'title' => 'Контейнеры'
+            )
+        );
         $this->render();
     }
 

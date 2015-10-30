@@ -20,32 +20,14 @@
                 <h4>Наша продукция</h4>
 
                 <div class="row">
-                    <div class="three columns product-list-item">
-                        <a href="/product/box/">
-                            <img class="u-max-full-width" src="http://placehold.it/150x100">
-                            <span>Коробки</span>
-                        </a>
-                    </div>
-                    <div class="three columns product-list-item">
-                        <a href="/product/packet/">
-                            <img class="u-max-full-width" src="http://placehold.it/150x100">
-                            <span>Пакеты</span>
-                        </a>
-                    </div>
-                    <div class="three columns product-list-item">
-                        <a href="/product/case/">
-                            <img class="u-max-full-width" src="http://placehold.it/150x100">
-                        </a>
-                        <span>Ящики</span>
-                    </div>
-                    <div class="three columns product-list-item">
-                        <img class="u-max-full-width" src="http://placehold.it/150x100">
-                        <span>Бочки</span>
-                    </div>
-                    <div class="three columns product-list-item">
-                        <img class="u-max-full-width" src="http://placehold.it/150x100">
-                        <span>Контейнеры</span>
-                    </div>
+                    <? foreach ($this->data['products'] as $item): ?>
+                        <div class="three columns product-list-item">
+                            <a href="/product/<?=$item['category']?>/">
+                                <img class="u-max-full-width" src="<?=$item['image']?>">
+                                <span><?=$item['title']?></span>
+                            </a>
+                        </div>
+                    <? endforeach ?>
                 </div>
             </div>
         </div>
