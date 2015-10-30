@@ -3,7 +3,7 @@
         <? foreach ($this->getRootMenu() as $link => $data): ?>
             <li>
                 <a class="button button-primary<?= $data['current'] ? ' item-selected' : '' ?>"
-                   href="<?= $link ?>">
+                   href="/<?= $link ?>/">
                     <?= $data['text'] ?>
                 </a>
             </li>
