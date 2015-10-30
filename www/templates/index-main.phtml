@@ -5,31 +5,36 @@
 
 <header>
     <div class="container">
-        <div class="four columns">
-            <h5><a href='/'><?= Settings::title ?></a></h5>
-        </div>
         <div class="row">
+            <div class="four columns">
+                <h5><a href='/main/'><?= Settings::title ?></a></h5>
+            </div>
             <div class="eight columns">
                 <? require 'root-menu.phtml' ?>
             </div>
         </div>
         <div class="row">
-            <div class="six columns">
-                <img class="u-full-width" src="http://placehold.it/1800x150">
-            </div>
-            <div class="six columns">
-                <img class="u-full-width" src="http://placehold.it/1800x150">
+            <div class="twelve columns" id="header-banner">
+                <img src="http://placehold.it/875x140">
             </div>
         </div>
+    </div>
 </header>
 
 <div class="container">
-    <h4><?= $this->page->getTitle() ?></h4>
+    <div class="row">
+        <div class="three columns" id="sidebar-left">
+            <? require 'newest-news.phtml' ?>
 
-    <p>
-        Наша компания существует на Российском рынке
-    </p>
-</div>
+        </div>
+        <div class="nine columns" id="main-content">
+            <h4><?= $this->page->getTitle() ?></h4>
+
+            <p>
+                Наша компания существует на Российском рынке
+            </p>
+        </div>
+    </div>
 
 </body>
 </html>
