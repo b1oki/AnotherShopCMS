@@ -21,6 +21,11 @@ nav#root-menu a {
     background: #1f69cf;
 }
 
+nav#root-menu a.item-selected {
+    color: #ffffff;
+    background: #7ca6eb;
+}
+
 nav#root-menu a:hover {
     background: #4d87dd;
 }

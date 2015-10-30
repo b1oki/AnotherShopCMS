@@ -14,7 +14,7 @@ $routes = array(
     array(
         'pattern' => '~^/company/$~',
         'class' => 'Index',
-        'method' => 'about',
+        'method' => 'company',
     ),
     // Страница контактов компании (/contacts)
     array(

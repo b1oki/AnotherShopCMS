@@ -4,17 +4,17 @@ class Page
 {
     protected $title;
     protected $template;
-    protected $menu;
+    protected $root_menu;
     protected $data;
 
     public function __construct()
     {
         $this->data = array();
-        $this->menu = array(
-            array('link' => '/company/', 'class' => 'Index', 'method' => 'about', 'text' => 'Компания', 'current' => false),
-            array('link' => '/news/', 'class' => 'News', 'method' => 'newest', 'text' => 'Новости', 'current' => false),
-            array('link' => '/product/', 'class' => 'Catalog', 'method' => 'main', 'text' => 'Продукция', 'current' => false),
-            array('link' => '/contacts/', 'class' => 'Index', 'method' => 'contacts', 'text' => 'Контакты', 'current' => false)
+        $this->root_menu = array(
+            'company' => array('text' => 'Компания', 'current' => false),
+            'news' => array('text' => 'Новости', 'current' => false),
+            'product' => array('text' => 'Продукция', 'current' => false),
+            'contacts' => array('text' => 'Контакты', 'current' => false)
         );
     }
 
@@ -95,20 +95,28 @@ class Index extends Page
 
     public function contacts()
     {
-        echo 'CONTACTS!';
+        $this->root_menu['contacts']['current'] = true;
+        echo 'CONTACTS';
     }
 
-    public function about()
+    public function company()
     {
-        echo 'ABOUT!';
+        $this->root_menu['company']['current'] = true;
+        echo 'COMPANY';
     }
 }
 
-class News
+class News extends Page
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->root_menu['news']['current'] = true;
+    }
+
     public function newest()
     {
-        echo 'NEWEST!';
+        echo 'NEWEST';
     }
 
     public function article()
@@ -117,8 +125,14 @@ class News
     }
 }
 
-class Catalog
+class Catalog extends Page
 {
+    public function __construct()
+    {
+        parent::__construct();
+        $this->root_menu['product']['current'] = true;
+    }
+
     public function main()
     {
         echo 'CATALOG (PATH: ' . $_REQUEST['category_path'] . ')';
@@ -127,5 +141,13 @@ class Catalog
     public function item()
     {
         echo 'CATALOG ITEM (PATH: ' . $_REQUEST['category_path'] . '), ID: ' . $_REQUEST['item_id'];
+    }
+}
+
+class Error extends Page
+{
+    public function not_found()
+    {
+        echo 'ERROR 404: PAGE NOT FOUND';
     }
 }

@@ -1,10 +1,10 @@
 <nav id="root-menu">
     <ul>
-        <? foreach ($this->getMenu() as $item): ?>
+        <? foreach ($this->getRootMenu() as $link => $data): ?>
             <li>
-                <a class="button button-primary<?= $item['current'] ? ' item-selected' : '' ?>"
-                   href="<?= $item['link'] ?>">
-                    <?= $item['text'] ?>
+                <a class="button button-primary<?= $data['current'] ? ' item-selected' : '' ?>"
+                   href="<?= $link ?>">
+                    <?= $data['text'] ?>
                 </a>
             </li>
         <? endforeach ?>
