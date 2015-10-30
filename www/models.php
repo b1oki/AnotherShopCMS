@@ -63,10 +63,12 @@ class Index
         $this->page->setTitle('Главная');
         require_once 'templates/index-main.phtml';
     }
+
     public function contacts()
     {
         echo 'CONTACTS!';
     }
+
     public function about()
     {
         echo 'ABOUT!';
@@ -79,6 +81,7 @@ class News
     {
         echo 'NEWEST!';
     }
+
     public function article()
     {
         echo 'NEWS ARTICLE: ' . $_REQUEST['article_id'];
@@ -91,6 +94,7 @@ class Catalog
     {
         echo 'CATALOG (PATH: ' . $_REQUEST['category_path'] . ')';
     }
+
     public function item()
     {
         echo 'CATALOG ITEM (PATH: ' . $_REQUEST['category_path'] . '), ID: ' . $_REQUEST['item_id'];
