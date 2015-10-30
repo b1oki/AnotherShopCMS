@@ -1,6 +1,6 @@
 <nav id="root-menu">
     <ul>
-        <? foreach ($this->page->menu as $item): ?>
+        <? foreach ($this->getMenu() as $item): ?>
             <li>
                 <a class="button button-primary<?= $item['current'] ? ' item-selected' : '' ?>"
                    href="<?= $item['link'] ?>">

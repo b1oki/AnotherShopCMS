@@ -3,7 +3,8 @@
 class Page
 {
     protected $title;
-    public $menu;
+    protected $template;
+    protected $menu;
 
     public function __construct()
     {
@@ -47,21 +48,19 @@ class Page
     {
         return $this->title . ' - ' . Settings::title;
     }
+
+    public function render() {
+        require $this->template;
+    }
 }
 
-class Index
+class Index extends Page
 {
-    public $page;
-
-    public function __construct()
-    {
-        $this->page = new Page();
-    }
-
     public function main()
     {
-        $this->page->setTitle('Главная');
-        require_once 'templates/index-main.phtml';
+        $this->setTitle('Главная');
+        $this->setTemplate('templates/index-main.phtml');
+        $this->render();
     }
 
     public function contacts()
