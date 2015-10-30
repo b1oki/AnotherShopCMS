@@ -22,9 +22,9 @@
                 <div class="row">
                     <? foreach ($this->data['products'] as $item): ?>
                         <div class="three columns product-list-item">
-                            <a href="/product/<?=$item['category']?>/">
-                                <img class="u-max-full-width" src="<?=$item['image']?>">
-                                <span><?=$item['title']?></span>
+                            <a href="/product/<?= $item['category'] ?>/">
+                                <img class="u-max-full-width" src="<?= $item['image'] ?>">
+                                <span><?= $item['title'] ?></span>
                             </a>
                         </div>
                     <? endforeach ?>
@@ -32,6 +32,7 @@
             </div>
         </div>
     </div>
-
+    <? require_once 'root-footer.phtml' ?>
+</div>
 </body>
 </html>

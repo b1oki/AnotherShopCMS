@@ -73,3 +73,7 @@ div.product-list-item {
 div.product-list-item img {
     max-height: 150px;
 }
+
+div#root-footer {
+    background: #f5f5f5;
+}
