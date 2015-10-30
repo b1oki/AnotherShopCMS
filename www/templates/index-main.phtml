@@ -15,7 +15,7 @@
         </div>
         <div class="row">
             <div class="twelve columns" id="header-banner">
-                <img src="http://placehold.it/875x140">
+                <img class="u-full-width" src="http://placehold.it/875x140">
             </div>
         </div>
     </div>
@@ -25,14 +25,47 @@
     <div class="row">
         <div class="three columns" id="sidebar-left">
             <? require 'newest-news.phtml' ?>
-
         </div>
         <div class="nine columns" id="main-content">
-            <h4><?= $this->page->getTitle() ?></h4>
+            <div class="row">
+                <h3><?= $this->page->getTitle() ?></h3>
 
-            <p>
-                Наша компания существует на Российском рынке
-            </p>
+                <p>
+                    Наша компания существует на Российском рынке
+                </p>
+            </div>
+            <div class="row">
+                <h4>Наша продукция</h4>
+
+                <div class="row">
+                    <div class="three columns product-list-item">
+                        <a href="/product/box/">
+                            <img class="u-max-full-width" src="http://placehold.it/150x100">
+                            <span>Коробки</span>
+                        </a>
+                    </div>
+                    <div class="three columns product-list-item">
+                        <a href="/product/packet/">
+                            <img class="u-max-full-width" src="http://placehold.it/150x100">
+                            <span>Пакеты</span>
+                        </a>
+                    </div>
+                    <div class="three columns product-list-item">
+                        <a href="/product/case/">
+                            <img class="u-max-full-width" src="http://placehold.it/150x100">
+                        </a>
+                        <span>Ящики</span>
+                    </div>
+                    <div class="three columns product-list-item">
+                        <img class="u-max-full-width" src="http://placehold.it/150x100">
+                        <span>Бочки</span>
+                    </div>
+                    <div class="three columns product-list-item">
+                        <img class="u-max-full-width" src="http://placehold.it/150x100">
+                        <span>Контейнеры</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 

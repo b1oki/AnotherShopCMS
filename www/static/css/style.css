@@ -12,33 +12,17 @@ header {
     margin: 0 auto 1.2em;
 }
 
-nav#root-menu {
-    padding: 5pt 0 0 10pt;
-}
-
-nav#root-menu ul {
-    list-style: none;
-}
-
 nav#root-menu ul li {
     display: inline;
 }
 
 nav#root-menu a {
     color: #ffffff;
-    line-height: 14px;
-    font-weight: bold;
-    text-decoration: none;
-    padding: 8px 12px 8px;
-    background: steelblue;
-}
-
-nav#root-menu a.item-selected {
-    background: dodgerblue;
+    background: #1f69cf;
 }
 
 nav#root-menu a:hover {
-    text-decoration: underline;
+    background: #4d87dd;
 }
 
 div.news-block {
@@ -75,4 +59,12 @@ dl.news-block-list-item dd a {
     color: #000000 !important;
     text-decoration: none;
     outline: none;
+}
+
+div.product-list-item {
+    margin: 0 25px 20px 0;
+}
+
+div.product-list-item img {
+    max-height: 150px;
 }

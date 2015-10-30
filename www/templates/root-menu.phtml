@@ -2,7 +2,8 @@
     <ul>
         <? foreach ($this->page->menu as $item): ?>
             <li>
-                <a href="<?= $item['link'] ?>" <?= $item['current'] ? 'class="item-selected"' : '' ?>>
+                <a class="button button-primary<?= $item['current'] ? ' item-selected' : '' ?>"
+                   href="<?= $item['link'] ?>">
                     <?= $item['text'] ?>
                 </a>
             </li>
