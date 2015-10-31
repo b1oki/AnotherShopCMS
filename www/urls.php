@@ -26,7 +26,7 @@ $routes = array(
     array(
         'pattern' => '~^/news/$~',
         'class' => 'News',
-        'method' => 'newest',
+        'method' => 'main',
     ),
     // Страница с одной новостью (/news/12345)
     array(

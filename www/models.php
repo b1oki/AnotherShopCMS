@@ -51,8 +51,14 @@ class Page
         return $this->title . ' - ' . Settings::title;
     }
 
-    public function render()
+    public function render($template = null, $title = null)
     {
+        if (!empty($template)) {
+            $this->setTemplate($template);
+        }
+        if (!empty($title)) {
+            $this->setTitle($title);
+        }
         require $this->template;
     }
 }
@@ -61,8 +67,6 @@ class Index extends Page
 {
     public function main()
     {
-        $this->setTitle('Главная');
-        $this->setTemplate('templates/index-main.phtml');
         $this->data['products'] = array(
             array(
                 'category' => 'box',
@@ -90,23 +94,19 @@ class Index extends Page
                 'title' => 'Контейнеры'
             )
         );
-        $this->render();
+        $this->render('templates/index-main.phtml', 'Главная');
     }
 
     public function contacts()
     {
         $this->root_menu['contacts']['current'] = true;
-        $this->setTitle('Контакты');
-        $this->setTemplate('templates/index-contacts.phtml');
-        $this->render();
+        $this->render('templates/index-contacts.phtml', 'Контакты');
     }
 
     public function company()
     {
         $this->root_menu['company']['current'] = true;
-        $this->setTitle('О компании');
-        $this->setTemplate('templates/index-company.phtml');
-        $this->render();
+        $this->render('templates/index-company.phtml', 'О компании');
     }
 }
 
@@ -118,14 +118,17 @@ class News extends Page
         $this->root_menu['news']['current'] = true;
     }
 
-    public function newest()
+    public function main()
     {
         echo 'NEWEST';
+        $this->render('templates/news-main.phtml', 'Новости');
     }
 
     public function article()
     {
         echo 'NEWS ARTICLE: ' . $_REQUEST['article_id'];
+        $article_title = 'ЗАголовок Статьи';
+        $this->render('templates/news-article.phtml', $article_title);
     }
 }
 
@@ -140,11 +143,15 @@ class Catalog extends Page
     public function main()
     {
         echo 'CATALOG (PATH: ' . $_REQUEST['category_path'] . ')';
+        $category_title = 'Категория';
+        $this->render('templates/error-404.phtml', $category_title);
     }
 
     public function item()
     {
         echo 'CATALOG ITEM (PATH: ' . $_REQUEST['category_path'] . '), ID: ' . $_REQUEST['item_id'];
+        $item_title = 'Продукт';
+        $this->render('templates/catalog-item.phtml', $item_title);
     }
 }
 
@@ -153,5 +160,6 @@ class Error extends Page
     public function not_found()
     {
         echo 'ERROR 404: PAGE NOT FOUND';
+        $this->render('templates/error-404.phtml', 'Not Found 404');
     }
 }
