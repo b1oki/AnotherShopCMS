@@ -96,7 +96,9 @@ class Index extends Page
     public function contacts()
     {
         $this->root_menu['contacts']['current'] = true;
-        echo 'CONTACTS';
+        $this->setTitle('Контакты');
+        $this->setTemplate('templates/index-contacts.phtml');
+        $this->render();
     }
 
     public function company()

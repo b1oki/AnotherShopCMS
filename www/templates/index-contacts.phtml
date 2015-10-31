@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<? require_once 'root-head.phtml' ?>
+<body>
+<? require_once 'root-header.phtml' ?>
+<div class="container">
+    <div class="row">
+        <div class="three columns" id="sidebar-left">
+            <? require 'newest-news.phtml' ?>
+        </div>
+        <div class="nine columns" id="main-content">
+            <div class="row">
+                <h3><?= $this->getTitle() ?></h3>
+
+                <p>
+                    Вы можете обратиться к нам по телефону или по электронной почте.
+                    Будем рады помочь Вам и ответить на все Ваши вопросы.
+                </p>
+            </div>
+            <div class="row">
+                <h4>Телефоны</h4>
+                <ul>
+                    <li>
+                        Телефон/факс: <strong><?= Settings::fax ?></strong>
+                    </li>
+                    <li>
+                        Телефон: <strong><?= Settings::phone ?></strong>
+                    </li>
+                </ul>
+            </div>
+            <div class="row">
+                <h4>E-mail</h4>
+                <ul>
+                    <li>
+                        <a href="mailto:<?= Settings::email ?>"><?= Settings::email ?></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <? require_once 'root-footer.phtml' ?>
+</div>
+</body>
+</html>
