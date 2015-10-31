@@ -12,6 +12,7 @@ class Page
     public function __construct()
     {
         $this->data = array();
+        $this->data['last-news'] = getLastNews();
         $this->root_menu = array(
             'company' => array('text' => 'Компания', 'current' => false),
             'news' => array('text' => 'Новости', 'current' => false),
@@ -69,7 +70,7 @@ class Index extends Page
 {
     public function main()
     {
-        $this->data['categories'] = getCategories();
+        $this->data['categories'] = getRootCategories();
         $this->data['category-no-image'] = 'http://placehold.it/150x100';
         $this->render('templates/index-main.phtml', 'Главная');
     }

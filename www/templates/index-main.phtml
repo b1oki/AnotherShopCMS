@@ -21,9 +21,9 @@
 
                 <div class="row">
                     <? foreach ($this->data['categories'] as $category): ?>
-                        <div class="three columns product-list-item">
-                            <a href="/product/<?= $category['category'] ?>/">
-                                <img class="u-max-full-width" src="
+                        <div class="four columns product-list-item">
+                            <a href="/product/<?= $category['id'] ?>/">
+                                <img class="u-full-width" src="
                                 <? if (!empty($category['image'])):
                                     echo $category['image'];
                                 else:
