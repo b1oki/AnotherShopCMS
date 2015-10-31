@@ -1,4 +1,6 @@
 <?php
+require_once 'settings.php';
+require_once 'models.php';
 
 class Page
 {
@@ -67,33 +69,8 @@ class Index extends Page
 {
     public function main()
     {
-        $this->data['products'] = array(
-            array(
-                'category' => 'box',
-                'image' => 'http://placehold.it/150x100',
-                'title' => 'Коробки'
-            ),
-            array(
-                'category' => 'case',
-                'image' => 'http://placehold.it/150x100',
-                'title' => 'Ящики'
-            ),
-            array(
-                'category' => 'packet',
-                'image' => 'http://placehold.it/150x100',
-                'title' => 'Пакеты'
-            ),
-            array(
-                'category' => 'barrel',
-                'image' => 'http://placehold.it/150x100',
-                'title' => 'Бочки'
-            ),
-            array(
-                'category' => 'container',
-                'image' => 'http://placehold.it/150x100',
-                'title' => 'Контейнеры'
-            )
-        );
+        $this->data['categories'] = getCategories();
+        $this->data['category-no-image'] = 'http://placehold.it/150x100';
         $this->render('templates/index-main.phtml', 'Главная');
     }
 

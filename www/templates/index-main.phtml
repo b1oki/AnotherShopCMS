@@ -20,11 +20,18 @@
                 <h4>Наша продукция</h4>
 
                 <div class="row">
-                    <? foreach ($this->data['products'] as $item): ?>
+                    <? foreach ($this->data['categories'] as $category): ?>
                         <div class="three columns product-list-item">
-                            <a href="/product/<?= $item['category'] ?>/">
-                                <img class="u-max-full-width" src="<?= $item['image'] ?>">
-                                <span><?= $item['title'] ?></span>
+                            <a href="/product/<?= $category['category'] ?>/">
+                                <img class="u-max-full-width" src="
+                                <? if (!empty($category['image'])):
+                                    echo $category['image'];
+                                else:
+                                    echo $this->data['category-no-image'];
+                                endif;
+                                ?>
+                                    ">
+                                <span><?= $category['title'] ?></span>
                             </a>
                         </div>
                     <? endforeach ?>

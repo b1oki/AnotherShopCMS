@@ -68,10 +68,22 @@ dl.news-block-list-item dd a {
 
 div.product-list-item {
     margin: 0 25px 20px 0;
+    position: relative;
 }
 
 div.product-list-item img {
-    max-height: 150px;
+    height: 100px;
+    width: 150px;
+}
+
+div.product-list-item span.with-image {
+    display: inline-block;
+    position: absolute;
+    bottom: 15px;
+    left: 0;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 5px 25px;
 }
 
 div#root-footer {

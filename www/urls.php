@@ -1,50 +1,20 @@
 <?php
 // Конфигурация маршрутов URL проекта.
+// ключ массива - CamelCase класс представления и его метод
+// паттерн в формате Perl-совместимого реулярного выражения
 $routes = array(
     // Главная страница сайта (/)
-    array(
-        // паттерн в формате Perl-совместимого реулярного выражения
-        'pattern' => '~^(/main)?/$~',
-        // Имя класса обработчика
-        'class' => 'Index',
-        // Имя метода класса обработчика
-        'method' => 'main'
-    ),
+    'IndexMain' => '~^(/main)?/$~',
     // Страница информации о компании (/company)
-    array(
-        'pattern' => '~^/company/$~',
-        'class' => 'Index',
-        'method' => 'company',
-    ),
+    'IndexCompany' => '~^/company/$~',
     // Страница контактов компании (/contacts)
-    array(
-        'pattern' => '~^/contacts/$~',
-        'class' => 'Index',
-        'method' => 'contacts',
-    ),
+    'IndexContacts' => '~^/contacts/$~',
     // Страница с последними новостями (/news)
-    array(
-        'pattern' => '~^/news/$~',
-        'class' => 'News',
-        'method' => 'main',
-    ),
+    'NewsMain' => '~^/news/$~',
     // Страница с одной новостью (/news/12345)
-    array(
-        'pattern' => '~^/news/(?P<article_id>[0-9]+)/$~',
-        'class' => 'News',
-        'method' => 'article',
-    ),
+    'NewsArticle' => '~^/news/(?P<article_id>[0-9]+)/$~',
     // Каталог и подразделы (/product/box/red/)
-    array(
-        'pattern' => '~^/product/(?P<category_path>([a-zA-Z_/\-]+/)*)$~',
-        'class' => 'Catalog',
-        'method' => 'main',
-    ),
+    'CatalogMain' => '~^/product/(?P<category_path>([a-zA-Z_/\-]+/)*)$~',
     // Товар (/product/box/red/item/3)
-    array(
-
-        'pattern' => '~^/product/(?P<category_path>([a-zA-Z_/\-]+/)*)(?P<item_id>[0-9]+)/$~',
-        'class' => 'Catalog',
-        'method' => 'item',
-    ),
+    'CatalogItem' => '~^/product/(?P<category_path>([a-zA-Z_/\-]+/)*)(?P<item_id>[0-9]+)/$~',
 );
