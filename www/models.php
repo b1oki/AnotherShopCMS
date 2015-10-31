@@ -104,7 +104,9 @@ class Index extends Page
     public function company()
     {
         $this->root_menu['company']['current'] = true;
-        echo 'COMPANY';
+        $this->setTitle('О компании');
+        $this->setTemplate('templates/index-company.phtml');
+        $this->render();
     }
 }
 

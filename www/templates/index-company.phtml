@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<? require_once 'root-head.phtml' ?>
+<body>
+<? require_once 'root-header.phtml' ?>
+<div class="container">
+    <div class="row">
+        <div class="three columns" id="sidebar-left">
+            <? require 'newest-news.phtml' ?>
+        </div>
+        <div class="nine columns" id="main-content">
+            <div class="row">
+                <h3><?= $this->getTitle() ?></h3>
+
+                <p>
+                    <?=Settings::title?> с N-го года занимается своим делом.
+                </p>
+            </div>
+        </div>
+    </div>
+    <? require_once 'root-footer.phtml' ?>
+</div>
+</body>
+</html>
