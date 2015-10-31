@@ -4,7 +4,7 @@ ini_set('display_errors', 1);
 
 require_once 'settings.php';
 require_once 'urls.php';
-require_once 'models.php';
+require_once 'views.php';
 
 // Назначаем модуль и действие по умолчанию.
 $module = 'Error';
