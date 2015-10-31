@@ -76,7 +76,7 @@ div.product-list-item img {
     width: 150px;
 }
 
-div.product-list-item span.with-image {
+div.product-list-item span {
     display: inline-block;
     position: absolute;
     bottom: 15px;
