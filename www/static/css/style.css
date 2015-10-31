@@ -71,11 +71,6 @@ div.product-list-item {
     position: relative;
 }
 
-div.product-list-item img {
-    height: 100px;
-    width: 150px;
-}
-
 div.product-list-item span {
     display: inline-block;
     position: absolute;
