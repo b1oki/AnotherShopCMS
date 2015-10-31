@@ -159,6 +159,8 @@ class Error extends Page
 {
     public function not_found()
     {
+        header('HTTP/1.0 404 Not Found');
+        header('Status: 404 Not Found');
         $this->render('templates/error-404.phtml', 'Страница не найдена (404-я ошибка)');
     }
 }
