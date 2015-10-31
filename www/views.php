@@ -121,7 +121,7 @@ class Catalog extends Page
     {
         echo 'CATALOG (PATH: ' . $_REQUEST['category_path'] . ')';
         $category_title = 'Категория';
-        $this->render('templates/error-404.phtml', $category_title);
+        $this->render('templates/catalog-main.phtml', $category_title);
     }
 
     public function item()
