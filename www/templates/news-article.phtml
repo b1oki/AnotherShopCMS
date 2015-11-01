@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<? require_once 'root-head.phtml' ?>
+<body>
+<? require_once 'root-header.phtml' ?>
+<div class="container">
+    <div class="row">
+        <div class="three columns" id="sidebar-left">
+            <? require 'newest-news.phtml' ?>
+        </div>
+        <div class="nine columns" id="main-content">
+            <h3><?= $this->getTitle() ?></h3>
+            <? if (!empty($article['image'])): ?>
+                <img class="u-pull-left news-article" src="<?= $article['image'] ?>" alt="<?= $article['title'] ?>">
+            <? endif ?>
+            <span class="news-list-article-date"><?= date("d.m.Y", strtotime($article['created'])) ?></span>
+            <br>
+            <div class="news-article"><?= $article['text'] ?></div>
+            <br class="u-cf">
+            <a href="/news/" title="Перейти к списку новостей">← Назад к списку новостей</a>
+        </div>
+    </div>
+</div>
+<? require_once 'root-footer.phtml' ?>
+</div>
+</body>
+</html>

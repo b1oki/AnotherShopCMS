@@ -14,10 +14,12 @@ class Database
         return $db;
     }
 
-    public static function get_data($query)
+    public static function get_data($query, $db = null)
     {
         try {
-            $db = Database::connect();
+            if (empty($db)) {
+                $db = Database::connect();
+            }
             $result = $db->query($query);
             $data = array();
             while ($d = $result->fetch_assoc()) {

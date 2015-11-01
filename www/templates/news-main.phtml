@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+<? require_once 'root-head.phtml' ?>
+<body>
+<? require_once 'root-header.phtml' ?>
+<div class="container">
+    <div class="row">
+        <div class="three columns" id="sidebar-left">
+            <? require 'newest-news.phtml' ?>
+        </div>
+        <div class="nine columns" id="main-content">
+            <h3><?= $this->getTitle() ?></h3>
+
+            <? foreach ($this->data['all-news'] as $article): ?>
+                <div class="row">
+                    <div class="news-list-article" onClick="window.location='/news/<?= $article['id'] ?>/'"
+                         title="Продолжить чтение новостной статьи &laquo;<?= $article['title'] ?>&raquo;">
+                        <? if (!empty($article['image'])): ?>
+                            <img class="u-pull-left" src="<?= $article['image'] ?>" alt="<?= $article['title'] ?>">
+                        <? endif ?>
+                        <span class="news-list-article-date"><?= date("d.m.Y", strtotime($article['created'])) ?></span>
+                        <br>
+                        <span class="news-list-article-title"><?= $article['title'] ?></span>
+                        <br>
+                        <span class="news-list-article-preview"><?= $article['preview'] ?></span>
+                        [<a href="/news/<?= $article['id'] ?>/" title="Продолжить чтение новостной статьи">…</a>]
+                        <br class="u-cf">
+                    </div>
+                </div>
+            <? endforeach ?>
+        </div>
+    </div>
+    <? require_once 'root-footer.phtml' ?>
+</div>
+</body>
+</html>

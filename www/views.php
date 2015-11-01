@@ -98,15 +98,25 @@ class News extends Page
 
     public function main()
     {
-        echo 'NEWEST';
+        $news = getAllNews();
+
+        function fillPreview(&$article)
+        {
+            if (empty($article['preview'])) {
+                $article['preview'] = make_article_preview($article['text']);
+            }
+        }
+
+        array_walk($news, "fillPreview");
+        $this->data['all-news'] = $news;
         $this->render('templates/news-main.phtml', 'Новости');
     }
 
     public function article()
     {
-        echo 'NEWS ARTICLE: ' . $_REQUEST['article_id'];
-        $article_title = 'ЗАголовок Статьи';
-        $this->render('templates/news-article.phtml', $article_title);
+        $article = getNewsArticle($_REQUEST['article_id']);
+        $this->data['article'] = $article;
+        $this->render('templates/news-article.phtml', $article['title']);
     }
 }
 
