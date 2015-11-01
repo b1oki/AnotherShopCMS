@@ -10,12 +10,12 @@
         </div>
         <div class="nine columns" id="main-content">
             <h3><?= $this->getTitle() ?></h3>
-            <? if (!empty($article['image'])): ?>
-                <img class="u-pull-left news-article" src="<?= $article['image'] ?>" alt="<?= $article['title'] ?>">
+            <? if (!empty($this->data['article']['image'])): ?>
+                <img class="u-pull-left news-article" src="<?= $this->data['article']['image'] ?>" alt="<?= $this->data['article']['title'] ?>">
             <? endif ?>
-            <span class="news-list-article-date"><?= date("d.m.Y", strtotime($article['created'])) ?></span>
+            <span class="news-list-article-date"><?= date("d.m.Y", strtotime($this->data['article']['created'])) ?></span>
             <br>
-            <div class="news-article"><?= $article['text'] ?></div>
+            <div class="news-article"><?= $this->data['article']['text'] ?></div>
             <br class="u-cf">
             <a href="/news/" title="Перейти к списку новостей">← Назад к списку новостей</a>
         </div>
