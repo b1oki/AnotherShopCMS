@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<? require_once 'root-head.phtml' ?>
+<body>
+<? require_once 'root-header.phtml' ?>
+<div class="container">
+    <div class="row">
+        <div class="three columns" id="sidebar-left">
+            <? require 'newest-news.phtml' ?>
+        </div>
+        <div class="nine columns" id="main-content">
+            <div class="row">
+                <h3><?= $this->getTitle() ?></h3>
+
+                <div class="product-item">
+                    <? if (isset($this->data['category'])): ?>
+                        <a href="/product/<?= $this->data['product']['category'] ?>/"><?= $this->data['category']['title'] ?></a>
+                    <? endif; ?>
+                    <h5><?= $this->data['product']['title'] ?></h5>
+                    <img class="u-max-full-width" src="
+                            <? if (!empty($this->data['product']['image'])):
+                        echo $this->data['product']['image'];
+                    else:
+                        echo $this->data['category-no-image'];
+                    endif;
+                    ?>
+                                ">
+
+                    <div class="u-cf"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <? require_once 'root-footer.phtml' ?>
+</div>
+</body>
+</html>

@@ -13,8 +13,8 @@ $routes = array(
     'NewsMain' => '~^/news/$~',
     // Страница с одной новостью (/news/12345)
     'NewsArticle' => '~^/news/(?P<article_id>[0-9]+)/$~',
-    // Каталог и подразделы (/product/box/red/)
-    'CatalogMain' => '~^/product/(?P<category_path>([0-9/]+/)*)$~',
-    // Товар (/product/box/red/item/3)
-    'CatalogItem' => '~^/product/(?P<category_path>([0-9/]+/)*)item/(?P<item_id>[0-9]+)/$~',
+    // Каталог и подразделы (/product/1/)
+    'CatalogMain' => '~^/product/(?P<category_path>([0-9]+/)?)$~',
+    // Товар (/product/1/2/)
+    'CatalogItem' => '~^/product/(?P<category_path>([0-9]+/)?)(?P<item_id>[0-9]+)/$~',
 );

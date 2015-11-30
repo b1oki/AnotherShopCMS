@@ -70,7 +70,8 @@ class Index extends Page
 {
     public function main()
     {
-        $this->data['categories'] = getRootCategories();
+        $this->data['categories'] = getCategories();
+        $this->data['products'] = getProducts();
         $this->data['category-no-image'] = 'http://placehold.it/150x100';
         $this->render('templates/index-main.phtml', 'Главная');
     }
@@ -96,6 +97,14 @@ class News extends Page
         $this->root_menu['news']['current'] = true;
     }
 
+    public static function make_article_preview($text)
+    {
+        $preview = strip_tags($text);
+        $preview = substr($preview, 0, 64);
+        $preview = rtrim($preview, ':!,.-…');
+        return substr($preview, 0, strrpos($preview, ' '));
+    }
+
     public function main()
     {
         $news = getAllNews();
@@ -103,7 +112,7 @@ class News extends Page
         function fillPreview(&$article)
         {
             if (empty($article['preview'])) {
-                $article['preview'] = make_article_preview($article['text']);
+                $article['preview'] = News::make_article_preview($article['text']);
             }
         }
 
@@ -122,6 +131,13 @@ class News extends Page
 
 class Catalog extends Page
 {
+    public static function getIdByPath($category_path)
+    {
+        $categories = preg_split('[/]', $category_path, null, PREG_SPLIT_NO_EMPTY);
+        $category = array_pop($categories);
+        return intval($category);
+    }
+
     public function __construct()
     {
         parent::__construct();
@@ -130,15 +146,32 @@ class Catalog extends Page
 
     public function main()
     {
-        echo 'CATALOG (PATH: ' . $_REQUEST['category_path'] . ')';
-        $category_title = 'Категория';
+        $category_title = 'Каталог';
+        $category_id = Catalog::getIdByPath($_REQUEST['category_path']); // парсим id каталога
+        if ($category_id != 0) {
+            $this->data['category'] = getCategory($category_id);
+        } else {
+            $this->data['category'] = false;
+        }
+        $this->data['category-no-image'] = 'http://placehold.it/150x100'; // картинка-заглушка
+        $this->data['categories'] = getCategories($category_id); // берем все подразделы с текущим родителем
+        // TODO: 1 для корня отображаем все корневые каталоги и, если есть, товары
+        // TODO: 2 а можно слева корневые каталоги, а на страничке топ товаров
+        $this->data['products'] = getProducts($category_id); // берем все товары с текущим родителем
         $this->render('templates/catalog-main.phtml', $category_title);
     }
 
     public function item()
     {
-        echo 'CATALOG ITEM (PATH: ' . $_REQUEST['category_path'] . '), ID: ' . $_REQUEST['item_id'];
         $item_title = 'Продукт';
+        $product_id = Catalog::getIdByPath($_REQUEST['item_id']); // парсим id продукта
+        $this->data['product'] = getProduct($product_id);
+        if ($this->data['product']['category'] != 0) {
+            $this->data['category'] = getCategory($this->data['product']['category']);
+        } else {
+            $this->data['category'] = false;
+        }
+        // TODO: Получаем товар. Рисуем картинку, описание, таблицу спецификации и т.д.
         $this->render('templates/catalog-item.phtml', $item_title);
     }
 }
