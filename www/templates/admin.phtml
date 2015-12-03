@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<? require_once 'root-head.phtml' ?>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="twelve columns" id="main-content">
+            <h1>
+                <?= $this->getTitle() ?>
+            </h1>
+
+            <div class="row">
+                <p class="<?= ($this->data['admin-auth-result']['status']) ? 'alert-info' : 'alert-error' ?>">
+                    <?= $this->data['admin-auth-result']['message'] ?>
+                </p>
+                <? if (!$this->data['admin-auth-result']['status']): ?>
+                    <form method="post">
+                        <label for="login">Логин</label>
+                        <input type="text" name="login" id="login"/>
+                        <label for="password">Пароль</label>
+                        <input type="password" name="password" id="password"/>
+                        <br>
+                        <button>Войти</button>
+                    </form>
+                <? endif ?>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

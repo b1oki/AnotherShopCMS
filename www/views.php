@@ -176,6 +176,33 @@ class Catalog extends Page
     }
 }
 
+class Admin extends Page
+{
+    public function auth()
+    {
+        $title = 'Администраторская панель';
+        if (empty($_POST['login']) or empty($_POST['password'])) {
+            $auth_message = 'Необходима авторизация';
+            $is_auth_complete = false;
+        } else {
+            $login = $_POST['login'];
+            $password = $_POST['password'];
+            if ($login == Settings::admin_login and $password == Settings::admin_password) {
+                $auth_message = 'Авторизация успешна';
+                $is_auth_complete = true;
+            } else {
+                $auth_message = 'Неверные данные';
+                $is_auth_complete = false;
+            }
+        }
+        if ($is_auth_complete) {
+            header('Location: /admin/?complete=1');
+        }
+        $this->data['admin-auth-result'] = array('status' => $is_auth_complete, 'message' => $auth_message);
+        $this->render('templates/admin.phtml', $title);
+    }
+}
+
 class Error extends Page
 {
     public function not_found()

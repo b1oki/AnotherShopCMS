@@ -14,4 +14,7 @@ class Settings
     const database_login = '';
     const database_password = '';
     const database_name = '';
+
+    const admin_login = 'admin';
+    const admin_password = 'pass';
 }

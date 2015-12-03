@@ -17,4 +17,7 @@ $routes = array(
     'CatalogMain' => '~^/product/(?P<category_path>([0-9]+/)?)$~',
     // Товар (/product/1/2/)
     'CatalogItem' => '~^/product/(?P<category_path>([0-9]+/)?)(?P<item_id>[0-9]+)/$~',
+
+    // Админка
+    'AdminAuth' => '~^/admin/$~',
 );
