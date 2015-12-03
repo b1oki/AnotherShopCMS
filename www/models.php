@@ -2,9 +2,10 @@
 require_once 'settings.php';
 require_once 'database/database.php';
 
-function debug($var)
+function debug($var, $tag='')
 {
-    echo '<pre style="position:absolute; bottom: 0; right: 0; border: 1px solid black;">';
+    echo '<pre style="position:absolute; bottom: 5px; right: 5px; border: 1px solid black;">';
+    echo "Debug $tag\n";
     var_dump($var);
     echo '</pre>';
 }
