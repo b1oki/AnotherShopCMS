@@ -10,6 +10,21 @@ function debug($var, $tag='')
     echo '</pre>';
 }
 
+function makeFingerprint() {
+    $fingerprint = 'ARE_YOU_ADMIN::' . $_SERVER['HTTP_USER_AGENT'] . '::' . Settings::admin_login . '::' . $_SERVER['REMOTE_ADDR'] . '::' . session_id();
+    return md5($fingerprint);
+}
+
+function checkFingerprint() {
+    return makeFingerprint() == $_SESSION['admin']['fingerprint'];
+}
+
+function makeAuth() {
+    $_SESSION['admin'] = array();
+    $_SESSION['admin']['logged'] = true;
+    $_SESSION['admin']['fingerprint'] = makeFingerprint();
+}
+
 function getCategories($parent_id = 0)
 {
     $db = Database::connect();

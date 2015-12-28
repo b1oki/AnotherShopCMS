@@ -39,5 +39,7 @@ foreach ($routes as $map_key => $map_pattern) {
     }
 }
 
+session_start();
+checkFingerprint();
 $current_page = new $module();
 $current_page->$action();

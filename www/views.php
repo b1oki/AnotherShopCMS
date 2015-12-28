@@ -178,28 +178,40 @@ class Catalog extends Page
 
 class Admin extends Page
 {
+    const ADMIN_AUTH_EMPTY = 0;
+    const ADMIN_AUTH_SUCCESS = 1;
+    const ADMIN_AUTH_ALREADY = 2;
+    const ADMIN_AUTH_WRONG = 3;
+
     public function auth()
     {
+        $this->data['login'] = Settings::admin_login;  # TODO: REMOVE
+        $this->data['password'] = Settings::admin_password;  # TODO: REMOVE
         $title = 'Администраторская панель';
-        if (empty($_POST['login']) or empty($_POST['password'])) {
-            $auth_message = 'Необходима авторизация';
-            $is_auth_complete = false;
+        if ($_SESSION['admin']['logged']) {
+            $auth_message = '';
+            $is_auth_complete = $this::ADMIN_AUTH_ALREADY;
         } else {
-            $login = $_POST['login'];
-            $password = $_POST['password'];
-            if ($login == Settings::admin_login and $password == Settings::admin_password) {
-                $auth_message = 'Авторизация успешна';
-                $is_auth_complete = true;
+            if (empty($_POST['login']) or empty($_POST['password'])) {
+                $auth_message = 'Необходима авторизация';
+                $is_auth_complete = $this::ADMIN_AUTH_EMPTY;
             } else {
-                $auth_message = 'Неверные данные';
-                $is_auth_complete = false;
+                $login = $_POST['login'];
+                $password = $_POST['password'];
+                if ($login == Settings::admin_login and $password == Settings::admin_password) {
+                    $auth_message = 'Авторизация успешна';
+                    $is_auth_complete = $this::ADMIN_AUTH_SUCCESS;
+                } else {
+                    $auth_message = 'Неверные данные';
+                    $is_auth_complete = $this::ADMIN_AUTH_WRONG;
+                }
+            }
+            if ($is_auth_complete == $this::ADMIN_AUTH_SUCCESS) {
+                makeAuth();
             }
         }
-        if ($is_auth_complete) {
-            header('Location: /admin/?complete=1');
-        }
         $this->data['admin-auth-result'] = array('status' => $is_auth_complete, 'message' => $auth_message);
-        $this->render('templates/admin.phtml', $title);
+        $this->render('templates/admin-auth.phtml', $title);
     }
 }
 
