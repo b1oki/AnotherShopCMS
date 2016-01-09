@@ -188,7 +188,7 @@ class Admin extends Page
         $this->data['login'] = Settings::admin_login;  # TODO: REMOVE
         $this->data['password'] = Settings::admin_password;  # TODO: REMOVE
         $title = 'Администраторская панель';
-        if ($_SESSION['admin']['logged']) {
+        if (isset($_SESSION['admin']['logged']) and $_SESSION['admin']['logged']) {
             $auth_message = '';
             $is_auth_complete = $this::ADMIN_AUTH_ALREADY;
         } else {

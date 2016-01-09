@@ -16,7 +16,11 @@ function makeFingerprint() {
 }
 
 function checkFingerprint() {
-    return makeFingerprint() == $_SESSION['admin']['fingerprint'];
+    if (isset($_SESSION['admin']['fingerprint'])) {
+        return makeFingerprint() == $_SESSION['admin']['fingerprint'];
+    } else {
+        return true;
+    }
 }
 
 function makeAuth() {
