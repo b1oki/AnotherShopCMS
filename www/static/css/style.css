@@ -45,6 +45,11 @@ div.news-block h3 {
     border-bottom: 1px solid #f3c8c8;
 }
 
+div.news-block h3 a {
+    text-decoration: inherit;
+    color: inherit;
+}
+
 div.news-block-list {
     margin: 0 0 2em;
     font-size: 0.85em;
