@@ -15,18 +15,21 @@ function makeFingerprint() {
     return md5($fingerprint);
 }
 
-function checkFingerprint() {
+function isAdmin() {
+    # Если есть подпись и она верная, то это админ
     if (isset($_SESSION['admin']['fingerprint'])) {
         return makeFingerprint() == $_SESSION['admin']['fingerprint'];
     } else {
-        return true;
+        return false;
     }
 }
 
-function makeAuth() {
+function doLogin() {
+    $_SESSION['admin'] = array('fingerprint' => makeFingerprint());
+}
+
+function doLogout() {
     $_SESSION['admin'] = array();
-    $_SESSION['admin']['logged'] = true;
-    $_SESSION['admin']['fingerprint'] = makeFingerprint();
 }
 
 function getCategories($parent_id = 0)
