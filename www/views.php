@@ -72,7 +72,7 @@ class Index extends Page
     {
         $this->data['categories'] = getCategories();
         $this->data['products'] = getProducts();
-        $this->data['category-no-image'] = '/static/images/empty_150_100.jpg';
+        $this->data['category-no-image'] = 'http://placehold.it/150x100';
         $this->render('templates/index-main.phtml', 'Главная');
     }
 
