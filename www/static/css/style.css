@@ -94,6 +94,17 @@ div.product-list-item span.product-list-item-price {
     right: 0;
 }
 
+div.product-item p#product-item-price {
+    background: #1F69CF;
+    color: white;
+    font-weight: bold;
+    font-size: large;
+    padding: 0.5em;
+    margin: 0.5em 0 0.5em 1em ;
+    clear: right;
+    float: right;
+}
+
 div#root-footer {
     text-align: center;
     font-size: 0.85em;
