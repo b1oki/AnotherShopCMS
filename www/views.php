@@ -72,7 +72,7 @@ class Index extends Page
     {
         $this->data['categories'] = getCategories();
         $this->data['products'] = getProducts();
-        $this->data['category-no-image'] = 'http://placehold.it/150x100';
+        $this->data['category-no-image'] = '/static/images/empty_150_100.jpg';
         $this->render('templates/index-main.phtml', 'Главная');
     }
 
@@ -171,6 +171,7 @@ class Catalog extends Page
         } else {
             $this->data['category'] = false;
         }
+        $this->data['category-no-image'] = 'http://placehold.it/150x100'; // картинка-заглушка
         // TODO: Получаем товар. Рисуем картинку, описание, таблицу спецификации и т.д.
         $this->render('templates/catalog-item.phtml', $item_title);
     }
