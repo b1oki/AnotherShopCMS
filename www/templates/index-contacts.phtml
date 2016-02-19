@@ -17,17 +17,24 @@
                     Будем рады помочь Вам и ответить на все Ваши вопросы.
                 </p>
             </div>
+            <?php if(Settings::fax != '' or Settings::phone != ''): ?>
             <div class="row">
                 <h4>Телефоны</h4>
                 <ul>
+                    <?php if(Settings::fax != ''): ?>
                     <li>
                         Телефон/факс: <strong><?= Settings::fax ?></strong>
                     </li>
+                    <?php endif; ?>
+                    <?php if(Settings::phone != ''): ?>
                     <li>
                         Телефон: <strong><?= Settings::phone ?></strong>
                     </li>
+                    <?php endif; ?>
                 </ul>
             </div>
+            <?php endif; ?>
+            <?php if(Settings::email != ''): ?>
             <div class="row">
                 <h4>E-mail</h4>
                 <ul>
@@ -36,6 +43,7 @@
                     </li>
                 </ul>
             </div>
+            <?php endif; ?>
         </div>
     </div>
     <? require_once 'root-footer.phtml' ?>
