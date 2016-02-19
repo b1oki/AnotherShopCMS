@@ -5,14 +5,12 @@
     <? foreach ($this->data['categories'] as $category): ?>
         <div class="four columns product-list-item">
             <a href="/product/<?= $category['id'] ?>/">
-                <img class="u-full-width" src="
-                                <? if (!empty($category['image'])):
+                <img class="u-full-width" src="<? if (!empty($category['image'])):
                     echo $category['image'];
                 else:
                     echo $this->data['category-no-image'];
                 endif;
-                ?>
-                                    ">
+                ?>">
                 <span class="product-list-item-title"><?= $category['title'] ?></span>
             </a>
         </div>
@@ -20,14 +18,12 @@
     <? foreach ($this->data['products'] as $product): ?>
         <div class="four columns product-list-item">
             <a href="/product/<?= $this->data['category']['id'] ?>/<?= $product['id'] ?>">
-                <img class="u-full-width" src="
-                                <? if (!empty($product['image'])):
+                <img class="u-full-width" src="<? if (!empty($product['image'])):
                     echo $product['image'];
                 else:
                     echo $this->data['category-no-image'];
                 endif;
-                ?>
-                                    ">
+                ?>">
                 <span class="product-list-item-title"><?= $product['title'] ?></span>
                 <span class="product-list-item-price">
                     Цена: <?= number_format($product['price'], 2, '.', ' ') ?> <i class="fa fa-rub"></i>

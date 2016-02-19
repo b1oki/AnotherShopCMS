@@ -17,14 +17,12 @@
                         <a href="/product/<?= $this->data['product']['category'] ?>/"><?= $this->data['category']['title'] ?></a>
                     <? endif; ?>
                     <h5><?= $this->data['product']['title'] ?></h5>
-                    <img class="u-max-full-width" src="
-                            <? if (!empty($this->data['product']['image'])):
+                    <img class="u-max-full-width" src="<? if (!empty($this->data['product']['image'])):
                         echo $this->data['product']['image'];
                     else:
                         echo $this->data['category-no-image'];
                     endif;
-                    ?>
-                                ">
+                    ?>">
 
                     <div class="u-cf"></div>
                 </div>
