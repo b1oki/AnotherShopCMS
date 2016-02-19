@@ -153,6 +153,9 @@ class Catalog extends Page
         } else {
             $this->data['category'] = false;
         }
+        if (isset($this->data['category']['parent']) and $this->data['category']['parent']) {
+            $this->data['category_parent'] = getCategory($this->data['category']['parent']);
+        }
         $this->data['category-no-image'] = 'http://placehold.it/150x100'; // картинка-заглушка
         $this->data['categories'] = getCategories($category_id); // берем все подразделы с текущим родителем
         // TODO: 1 для корня отображаем все корневые каталоги и, если есть, товары

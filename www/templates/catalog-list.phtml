@@ -1,4 +1,7 @@
 <div class="products-list">
+    <? if (isset($this->data['category_parent'])): ?>
+        <a href="/product/<?= $this->data['category_parent']['id'] ?>/"><?= $this->data['category_parent']['title'] ?></a>
+    <? endif; ?>
     <? if (isset($this->data['category'])): ?>
         <h4><?= $this->data['category']['title'] ?></h4>
     <? endif; ?>
